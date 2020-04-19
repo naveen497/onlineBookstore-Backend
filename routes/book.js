@@ -1,12 +1,7 @@
 import express from "express";
 const book = require('../models/book.schema')
 
-/*router.route('/booksBySeller').get((req,res)=>{
-    let query = req.query.q;
-    book.find({seller:query})
-        .then(books=>res.json(books))
-        .catch(err=>res.status(400).json('Error: '+err))
-})*/
+
 const bookRouter = express.Router();
 
 
@@ -35,13 +30,27 @@ bookRouter.route('/getBookById/:bid').get((req, res) => {
         .catch(err => res.status(400).json('Error: '+err))
 })
 
-// bookRouter.route('/search').get((req, res) => {
-//     let query = req.query.q;
-//     book.find({$or:[{title: {"$regex": query,"$options":"i"}},
-//             {authors:{"$elemMatch":{"$regex":query,"$options":"i"}}},{category:{"$elemMatch":{"$regex":query,"$options":"i"}}}]})
-//         .then(books=>res.json(books))
-//         .catch(err=>res.status(400).json('Error: '+err));
-// })
+bookRouter.route('/deleteBook/:isbn').delete((req, res)=>{
+    const isbn = req.params['isbn'];
+    book.remove({"isbn":{"$exists":true},
+                 "isbn.identifier":isbn})
+                .then(book => res.json(book)) 
+                .catch(err => res.status(400).json('err:' + err))
+})
+
+
+bookRouter.route('/updateBook/:isbn').put((req, res)=>{
+    const isbn = req.params['isbn'];
+    const price = req.body.price;
+    const quantity = req.body.quantity;
+ 
+
+    book.updateOne({"isbn":{"$exists":true},
+                 "isbn.identifier":isbn}, { $set: {'price.amount':price, quantity:quantity} })
+                .then(book => res.json(book)) 
+                .catch(err => res.status(400).json('err:' + err))
+})
+
 
 //search  book by isbn
  bookRouter.route('/getBookByIsbn/:isbn').get((req,res) =>{

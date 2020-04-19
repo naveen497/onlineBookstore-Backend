@@ -15,7 +15,6 @@ wishRouter.route('/addToWish/:user').put((req,res)=>{
 
 })
 
-
 wishRouter.route('/delete/:user').delete((req,res)=>{
     const user = req.params['user'];
     console.log(user);
