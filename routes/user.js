@@ -15,6 +15,8 @@ userRoutes.post("", async (req, res) => {
         const sessionUser = sessionizeUser(newUser);
         await newUser.save();
         req.session.user = sessionUser;
+        console.log('in signup session')
+        console.log(req.session.user)
         res.send(sessionUser);
     } catch (err) {
         res.status(400).send(parseError(err));

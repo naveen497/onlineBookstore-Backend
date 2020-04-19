@@ -14,7 +14,11 @@ sessionRouter.post("", async (req, res) => {
         const user = await User.findOne({email});
         if (user && user.comparePasswords(password)) {
             const sessionUser = sessionizeUser(user);
+            console.log('in sign : session')
+            console.log(sessionUser)
             req.session.user = sessionUser
+            console.log('session.user')
+            console.log(req.session.user)
             res.send(sessionUser);
         } else {
             throw new Error('Invalid login credentials');
@@ -43,8 +47,13 @@ sessionRouter.delete("", ({session}, res) => {
     }
 });
 
-sessionRouter.get("", ({session: {user}}, res) => {
-    res.send({user});
+sessionRouter.get("", ({session}, res) => {
+    console.log("getting the session")
+    console.log(session)
+    console.log('===========')
+    console.log(session.user)
+    const user = session.user
+    return res.send({user});
 });
 
 export default sessionRouter;
