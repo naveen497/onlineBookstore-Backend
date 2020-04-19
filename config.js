@@ -1,7 +1,7 @@
 export const {
     PORT = 5000,
     NODE_ENV = 'development',
-    MONGO_URI = 'mongodb+srv://ritvik:ritvik123@databaseforbookapi-gzios.mongodb.net/test?retryWrites=true&w=majority',
+    MONGO_URI = 'mongodb://heroku_mrmtrwnm:uuh45dgsiuiebr4or0njpn5es1@ds125912.mlab.com:25912/heroku_mrmtrwnm',
     SESS_NAME = 'sid',
     SESS_SECRET = 'secret!session',
     SESS_LIFETIME = 1000 * 60 * 60 * 2
