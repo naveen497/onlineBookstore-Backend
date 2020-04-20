@@ -22,6 +22,7 @@ import {MONGO_URI, NODE_ENV, PORT, SESS_LIFETIME, SESS_NAME, SESS_SECRET} from '
                 'http://localhost:3000',
                 'http://localhost:3001',
                 'https://webdev-project-team17.herokuapp.com',
+                'https://frontend-bookbar.herokuapp.com',
                 '*'
             ];
             let origin = req.headers.origin;

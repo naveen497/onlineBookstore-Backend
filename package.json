@@ -8,6 +8,11 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
+
+  "engines": {
+    "node": "12.13.1"
+  },
+  
   "repository": {
     "type": "git",
     "url": "https://github.ccs.neu.edu/deepakkumar/onlineBookstore-Backend"
