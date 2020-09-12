@@ -24,6 +24,7 @@ import {MONGO_URI, NODE_ENV, PORT, SESS_LIFETIME, SESS_NAME, SESS_SECRET} from '
                 'https://webdev-project-team17.herokuapp.com',
                 'https://frontend-bookbar.herokuapp.com',
                 'https://test-front-end-1.herokuapp.com',
+                'https://bookbar.netlify.app',
                 '*'
             ];
             let origin = req.headers.origin;
